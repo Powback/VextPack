@@ -11,7 +11,6 @@ export class VextPackPlugin implements Plugin {
     constructor(options?: Partial<VextPackConfig>) {
         this._options = {
             compilerPath: process.env.VUICC_PATH!,
-	        mode: process.env.MODE!,
             outputPath: '../',
             compilerFile: 'vuicc.exe',
             ...options
@@ -29,7 +28,7 @@ export class VextPackPlugin implements Plugin {
             if (compilation.compiler.isChild()) {
                 return Promise.resolve();
             }
-			if(this._options.mode == "development") {
+			if(process.env.NODE_ENV === "development") {
 				return this._vuicc.compile({
 					sourcePath: __dirname + "\\proxy",
 					outputPath: this._options.outputPath

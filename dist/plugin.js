@@ -15,7 +15,7 @@ var compiler_1 = require("./compiler");
 var path_1 = require("path");
 var VextPackPlugin = /** @class */ (function () {
     function VextPackPlugin(options) {
-        this._options = __assign({ compilerPath: process.env.VUICC_PATH, mode: process.env.MODE, outputPath: '../', compilerFile: 'vuicc.exe' }, options);
+        this._options = __assign({ compilerPath: process.env.VUICC_PATH, outputPath: '../', compilerFile: 'vuicc.exe' }, options);
         // TODO: Catch invalid compiler options
         this._vuicc = new compiler_1.VuicCompiler(path_1.join(this._options.compilerPath, this._options.compilerFile));
     }
@@ -26,7 +26,7 @@ var VextPackPlugin = /** @class */ (function () {
             if (compilation.compiler.isChild()) {
                 return Promise.resolve();
             }
-            if (_this._options.mode == "development") {
+            if (process.env.NODE_ENV === "development") {
                 return _this._vuicc.compile({
                     sourcePath: __dirname + "\\proxy",
                     outputPath: _this._options.outputPath
