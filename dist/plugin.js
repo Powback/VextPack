@@ -28,7 +28,7 @@ var VextPackPlugin = /** @class */ (function () {
             }
             if (_this._options.mode == "development") {
                 return _this._vuicc.compile({
-                    sourcePath: __dirname + "../src/proxy",
+                    sourcePath: __dirname + "\\proxy",
                     outputPath: _this._options.outputPath
                 });
             }

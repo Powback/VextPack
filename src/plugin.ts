@@ -31,7 +31,7 @@ export class VextPackPlugin implements Plugin {
             }
 			if(this._options.mode == "development") {
 				return this._vuicc.compile({
-					sourcePath: __dirname + "../src/proxy",
+					sourcePath: __dirname + "\\proxy",
 					outputPath: this._options.outputPath
 				});
 			}
